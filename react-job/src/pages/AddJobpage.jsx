@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { SiAlacritty } from "react-icons/si";
+
 
 const AddJobpage = () => {
     const [title, setTitle] = useState('');
