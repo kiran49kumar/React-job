@@ -1,41 +1,43 @@
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-
 const AddJobpage = ({ addJobSubmit }) => {
-    const [title, setTitle] = useState('');
-    const [type, setType] = useState('Full-Time');
-    const [location, setLocation] = useState('');
-    const [salary, setSalary] = useState('Under $50K');
-    const [description, setDescription] = useState('');
-    const [companyName, setCompanyName] = useState('');
-    const [companyDescription, setCompanyDescription] = useState('');
-    const [contactEmail, setContactEmail] = useState('');
-    const [contactPhone, setContactPhone] = useState('');
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("Full-Time");
+  const [location, setLocation] = useState("");
+  const [salary, setSalary] = useState("Under $50K");
+  const [description, setDescription] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyDescription, setCompanyDescription] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const submitForm = (e) => {
-      e.preventDefault();
+  const submitForm = (e) => {
+    e.preventDefault();
 
-      const newJob = {
-        title,
-        type,
-        location,
-        description,
-        salary,
-        company: {
-          name: companyName,
-          description: companyDescription,
-          contactEmail,
-          contactPhone,
-        },
-      };
-      addJobSubmit(newJob);
-
-      return navigate('/jobs');
+    const newJob = {
+      title,
+      type,
+      location,
+      description,
+      salary,
+      company: {
+        name: companyName,
+        description: companyDescription,
+        contactEmail,
+        contactPhone,
+      },
     };
+    addJobSubmit(newJob);
+
+    toast.success("Job added successfully");
+
+    return navigate("/jobs");
+  };
 
   return (
     <section className="bg-indigo-50">
@@ -45,7 +47,10 @@ const AddJobpage = ({ addJobSubmit }) => {
             <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
             <div className="mb-4">
-              <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
+              <label
+                htmlFor="type"
+                className="block text-gray-700 font-bold mb-2"
+              >
                 Job Type
               </label>
               <select
@@ -97,7 +102,10 @@ const AddJobpage = ({ addJobSubmit }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
+              <label
+                htmlFor="type"
+                className="block text-gray-700 font-bold mb-2"
+              >
                 Salary
               </label>
               <select
@@ -123,7 +131,9 @@ const AddJobpage = ({ addJobSubmit }) => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2">Location</label>
+              <label className="block text-gray-700 font-bold mb-2">
+                Location
+              </label>
               <input
                 type="text"
                 id="location"
@@ -139,7 +149,10 @@ const AddJobpage = ({ addJobSubmit }) => {
             <h3 className="text-2xl mb-5">Company Info</h3>
 
             <div className="mb-4">
-              <label htmlFor="company" className="block text-gray-700 font-bold mb-2">
+              <label
+                htmlFor="company"
+                className="block text-gray-700 font-bold mb-2"
+              >
                 Company Name
               </label>
               <input
